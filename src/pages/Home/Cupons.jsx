@@ -1,28 +1,19 @@
-// Coupons.jsx
 import React from 'react';
 import { FiPercent } from 'react-icons/fi';
+import UseCupons from '../../Hooks/UseCupons';
+import Loading from '../Loading/Loading';
+import Marquee from 'react-fast-marquee';  
+import Card3 from './Card3';
 
 const Coupons = () => {
-  const coupons = [
-    {
-      code: 'SAVE20',
-      discount: '20%',
-      description: 'Get a 20% discount on your next booking with this exclusive coupon.',
-    },
-    {
-      code: 'FALL25',
-      discount: '25%',
-      description: 'Fall into savings! Use this coupon to enjoy a 25% discount on your stay.',
-    },
-    {
-      code: 'SPECIAL30',
-      discount: '30%',
-      description: 'Unlock special savings! Use this coupon code to get a 30% discount.',
-    },
-  ];
+  const { isLoading, data, refetch } = UseCupons();
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
-    <section className=" py-16 relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden">
       {/* Coupon Images/Icons */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="absolute bottom-0 left-0 p-4">
@@ -62,24 +53,12 @@ const Coupons = () => {
           save on your next booking.
         </p>
 
-        <div className="flex flex-wrap justify-center mt-8 space-x-6 relative">
-          {coupons.map((coupon, index) => (
-            <div
-              key={index}
-              className="relative bg-white p-4 rounded-lg shadow-md text-center"
-              style={{ width: '300px' }}
-            >
-              <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full p-3">
-                <FiPercent size={30} color="#fff" />
-              </div>
-              <div className="text-blue-500">
-                <p className="text-lg font-bold">{coupon.discount}</p>
-              </div>
-              <h3 className="text-2xl text-black font-bold mb-2">{coupon.code}</h3>
-              <p className="text-sm text-gray-500">{coupon.description}</p>
-            </div>
-          ))}
-        </div>
+        {/* Marquee to display coupon codes */}
+        <Marquee pauseOnHover={true} speed={100}>
+          {data.map(cupons =>
+            <Card3 key={cupons._id} cupons={cupons}></Card3>)
+          }
+        </Marquee>
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-const UseSubmit = () => {
+const UseUser = () => {
 
     const { data, isLoading, isFetching, refetch } = useQuery(
         {
-            queryKey: ["submit"],
+            queryKey: ["users"],
             queryFn: async () => {
-                const data = await fetch("https://estudy-server.vercel.app/submit");
+                const data = await fetch("http://localhost:5001/users");
                 return await data.json();
             }
         }
@@ -15,4 +15,4 @@ const UseSubmit = () => {
     return { data, isLoading, isFetching, refetch };
 };
 
-export default UseSubmit;
+export default UseUser;

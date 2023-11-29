@@ -1,17 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet,useLocation } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
 import GoToTop from "../Shared/GoToTop/GoToTop";
 
 
 
-const Root = () => {
+const Main = () => {
+    const location = useLocation();
+    
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('register');
     return (
         <>
+        
             <div className="w-full mx-auto">
                 <div className="w-11/12 mx-auto">
                     <nav>
-                        <Navbar />
+                    { noHeaderFooter || <Navbar></Navbar>}
                     </nav>
                     <div className="w-4/5 mx-auto">
                         <Outlet />
@@ -19,9 +23,12 @@ const Root = () => {
                 </div>
                 <GoToTop></GoToTop>
             </div>
-            <Footer />
+            { noHeaderFooter || <Footer></Footer>}
         </>
     );
 };
 
-export default Root;
+
+
+
+export default Main;

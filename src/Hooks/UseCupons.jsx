@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-const UseAssignment = () => {
+const UseCupons = () => {
 
     const { data, isLoading, isFetching, refetch } = useQuery(
         {
-            queryKey: ["assignment"],
+            queryKey: ["cupons"],
             queryFn: async () => {
-                const data = await fetch("https://estudy-server.vercel.app/assignment");
+                const data = await fetch("http://localhost:5001/cupons");
                 return await data.json();
             }
         }
@@ -15,4 +15,4 @@ const UseAssignment = () => {
     return { data, isLoading, isFetching, refetch };
 };
 
-export default UseAssignment;
+export default UseCupons;

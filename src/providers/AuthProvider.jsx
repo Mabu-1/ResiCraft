@@ -12,7 +12,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -32,11 +31,18 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const handleUpdateProfile = (displayName, photoURL, email) => {
-   
+  const handleUpdateProfile = async (displayName, photoURL, email) => {
+    // Update profile without lastSignInTime
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+      photoURL: photoURL,
+    });
 
-    const updateUser = { ...user, displayName, photoURL, email, lastSignInTime: user.metadata.lastSignInTime };
-    setUser(updateUser);
+    // Fetch updated user data
+    const updatedUser = auth.currentUser;
+
+    // Update user with the fetched data including lastSignInTime
+    setUser(updatedUser);
 
     return updateProfile(auth.currentUser, {
       displayName: displayName,

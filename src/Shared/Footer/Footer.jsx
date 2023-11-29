@@ -27,10 +27,9 @@ const Footer = () => {
                         </div>
                         <div>
                             <h2 className='text-4xl mt-5 mb-8 font-semibold text-[#7207ff] '>Pages</h2>
-                            <li><Link className="text-blue-300 text-lg font-bold" to='/assignments'>Assignments</Link></li>
-                            <li><Link className="text-blue-300 text-lg font-bold" to='/create'>Create Assignments</Link></li>
-                            <li><Link className="text-blue-300 text-lg font-bold" to='/submissions'>Submissions</Link></li>
-                            
+                            <li><Link className="text-blue-300 text-lg font-bold" to='/apartment'>Apartment</Link></li>
+                          
+                           
                             <li><Link className="text-blue-300 text-lg font-bold" to='/login'>login</Link></li>
                             <li><Link className="text-blue-300 text-lg font-bold" to='/register'>Register</Link></li>
                         </div>
@@ -48,7 +47,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='bg-black text-[#1d1ddd] p-3 text-center'>
-                <p>© eStudy  2023 | Created by <span>Mahtab Uddin</span></p>
+                <p>© ResiCraft  2023 | Created by <span>Mahtab Uddin</span></p>
             </div>
         </div>
     );

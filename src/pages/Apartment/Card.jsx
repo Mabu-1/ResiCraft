@@ -1,16 +1,18 @@
+// Card.jsx
+
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 import axios from 'axios';
 
-const Card = ({ apartment,refetch }) => {
-  const {_id, image, floorNumber, blockName, apartmentNumber, rent } = apartment;
+const Card = ({ apartment, refetch }) => {
+  const { _id, image, floorNumber, blockName, apartmentNumber, rent } = apartment;
   const { user } = useContext(AuthContext);
+  
   const name = user.displayName;
   const email = user.email;
-const date=  user.metadata.lastSignInTime;
-  
-
+  const lastSignInTime = user.metadata.lastSignInTime; // Access lastSignInTime directly from user object
+   console.log(lastSignInTime);
   const handleAgreement = async (e) => {
     e.preventDefault();
     const myData = {
@@ -20,17 +22,21 @@ const date=  user.metadata.lastSignInTime;
       blockName: apartment.blockName,
       apartmentNumber: apartment.apartmentNumber,
       rent: apartment.rent,
-      date:date,
+      date: lastSignInTime,
       status: 'pending',
     };
+
     const myData1 = {
-      buyOption:false
+      buyOption: false,
     };
-console.log(myData);
+
+    console.log(myData);
+
     try {
       const response = await axios.post("http://localhost:5001/users", myData);
       const response1 = await axios.put(`http://localhost:5001/apartment/${_id}`, myData1);
-   refetch();
+      refetch();
+
       if (response.data.acknowledged) {
         Swal.fire({
           position: 'top-end',
@@ -48,7 +54,6 @@ console.log(myData);
         text: 'An error occurred while creating the agreement.',
       });
     }
-   
   };
 
   return (

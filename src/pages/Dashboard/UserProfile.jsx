@@ -57,7 +57,7 @@ console.log(filteredUser);
                         <p> Rent: {rent ? `${rent} Tk` : 'None'}</p>
                         </div>
                        
-                        \
+                     
                        
                      
                     </div>

@@ -28,7 +28,7 @@ const ManageCupons = () => {
 
   const handleAddCoupon = async () => {
     try {
-      const res = await axios.post("http://localhost:5001/cupons", couponData);
+      const res = await axios.post("https://appartment-server.vercel.app/cupons", couponData);
 
       if (res.data.acknowledged) {
         Swal.fire({

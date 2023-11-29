@@ -5,7 +5,7 @@ const UseUser = () => {
         {
             queryKey: ["users"],
             queryFn: async () => {
-                const data = await fetch("http://localhost:5001/users");
+                const data = await fetch("https://appartment-server.vercel.app/users");
                 return await data.json();
             }
         }

@@ -5,7 +5,7 @@ const UseApartment = () => {
         {
             queryKey: ["assignment"],
             queryFn: async () => {
-                const data = await fetch("http://localhost:5001/apartment");
+                const data = await fetch("https://appartment-server.vercel.app/apartment");
                 return await data.json();
             }
         }

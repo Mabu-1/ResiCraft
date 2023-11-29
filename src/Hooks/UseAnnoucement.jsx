@@ -5,7 +5,7 @@ const UseAnnouncement = () => {
         {
             queryKey: ["announcement"],
             queryFn: async () => {
-                const data = await fetch("http://localhost:5001/announcement");
+                const data = await fetch("https://appartment-server.vercel.app/announcement");
                 return await data.json();
             }
         }

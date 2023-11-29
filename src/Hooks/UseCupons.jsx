@@ -5,7 +5,7 @@ const UseCupons = () => {
         {
             queryKey: ["cupons"],
             queryFn: async () => {
-                const data = await fetch("http://localhost:5001/cupons");
+                const data = await fetch("https://appartment-server.vercel.app/cupons");
                 return await data.json();
             }
         }

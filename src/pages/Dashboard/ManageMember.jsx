@@ -30,10 +30,10 @@ const ManageMember = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.put(`http://localhost:5001/users/${id}`, myUserData);
+          const response = await axios.put(`https://appartment-server.vercel.app/users/${id}`, myUserData);
           const apartmentFiltered = apartmentData.filter((apartment) => apartment.apartmentNumber === apartmentNumber);
           const apartmentId = apartmentFiltered[0]._id;
-          const response1 = await axios.put(`http://localhost:5001/apartment/${apartmentId}`, myApartmentData);
+          const response1 = await axios.put(`https://appartment-server.vercel.app/apartment/${apartmentId}`, myApartmentData);
 
           if (response.data.acknowledged && response1.data.acknowledged) {
             Swal.fire({

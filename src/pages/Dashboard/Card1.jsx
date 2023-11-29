@@ -29,7 +29,7 @@ const Card1 = ({ users, refetch }) => {
     };
 
     try {
-      const response = await axios.put(`http://localhost:5001/users/${_id}`, myData);
+      const response = await axios.put(`https://appartment-server.vercel.app/users/${_id}`, myData);
 
       if (response.data.acknowledged) {
         Swal.fire({
@@ -61,8 +61,8 @@ const Card1 = ({ users, refetch }) => {
     };
 
     try {
-      const response = await axios.put(`http://localhost:5001/users/${_id}`, myData);
-      const response1 = await axios.put(`http://localhost:5001/apartment/${id}`, myData1);
+      const response = await axios.put(`https://appartment-server.vercel.app/users/${_id}`, myData);
+      const response1 = await axios.put(`https://appartment-server.vercel.app/apartment/${id}`, myData1);
       if (response.data.acknowledged) {
         Swal.fire({
           position: 'top-end',

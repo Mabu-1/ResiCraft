@@ -37,7 +37,7 @@ const Announcement = () => {
         console.log(myData);
 
         try {
-            const res = await axios.post("http://localhost:5001/announcement", myData);
+            const res = await axios.post("https://appartment-server.vercel.app/announcement", myData);
             console.log(res)
             if (res.data.acknowledged) {
                 Swal.fire({

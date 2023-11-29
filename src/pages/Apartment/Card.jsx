@@ -33,8 +33,8 @@ const Card = ({ apartment, refetch }) => {
     console.log(myData);
 
     try {
-      const response = await axios.post("http://localhost:5001/users", myData);
-      const response1 = await axios.put(`http://localhost:5001/apartment/${_id}`, myData1);
+      const response = await axios.post("https://appartment-server.vercel.app/users", myData);
+      const response1 = await axios.put(`https://appartment-server.vercel.app/apartment/${_id}`, myData1);
       refetch();
 
       if (response.data.acknowledged) {
